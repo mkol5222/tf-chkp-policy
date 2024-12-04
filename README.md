@@ -3,6 +3,7 @@
 Resources:
 * Check Point Mamagemet API [reference](https://sc1.checkpoint.com/documents/latest/APIs/)
 * Check Point Terraform Provider [docs](https://registry.terraform.io/providers/CheckPointSW/checkpoint/latest/docs)
+* [SmartTasks](https://sc1.checkpoint.com/documents/R82/WebAdminGuides/EN/CP_R82_SecurityManagement_AdminGuide/Content/Topics-SECMG/SmartTasks.htm) - callbacks from Security Management script / web hook (e.g. implement pre-publish checks per your policy)
 
 ## Management API accessibility
 
@@ -119,4 +120,6 @@ Consider right click on session and *Publish & Disconnect* it from GUI. This wil
 * Import object from Security Management into Terraform
 * Bulk operations on objects from CSV/YAML/JSON with Terraform
 * Game - who will be first to create host with TF from his machine?
+* Session name and description
 * Improved publish with easy dependencies (publish made last)
+* Protecting *devops* objects with tags and before-publish SmartTask
