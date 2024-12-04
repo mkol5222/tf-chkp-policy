@@ -119,7 +119,7 @@ Consider right click on session and *Publish & Disconnect* it from GUI. This wil
 * Publish and disconnect session from Terraform
 * Import object from Security Management into Terraform
 * Bulk operations on objects from CSV/YAML/JSON with Terraform
-* Game - who will be first to create host with TF from his machine?
+* [Game](./game/NOTES.md) - who will be first to create host with TF from his machine?
 * Session name and description
 * Improved publish with easy dependencies (publish made last)
 * Protecting *devops* objects with tags and before-publish SmartTask
