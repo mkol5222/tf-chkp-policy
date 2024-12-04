@@ -109,3 +109,14 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ![alt text](./img/sessions.png)
 
 Here is our new host object:
+![alt text](./img/change_report.png)
+
+Consider right click on session and *Publish & Disconnect* it from GUI. This will apply changes to the database and object becomes visible in Smart Console.
+
+## More conntent
+
+* Publish and disconnect session from Terraform
+* Import object from Security Management into Terraform
+* Bulk operations on objects from CSV/YAML/JSON with Terraform
+* Game - who will be first to create host with TF from his machine?
+* Improved publish with easy dependencies (publish made last)
