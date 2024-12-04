@@ -5,6 +5,14 @@ Resources:
 * Check Point Terraform Provider [docs](https://registry.terraform.io/providers/CheckPointSW/checkpoint/latest/docs)
 * [SmartTasks](https://sc1.checkpoint.com/documents/R82/WebAdminGuides/EN/CP_R82_SecurityManagement_AdminGuide/Content/Topics-SECMG/SmartTasks.htm) - callbacks from Security Management script / web hook (e.g. implement pre-publish checks per your policy)
 
+## Architecture
+
+There are 3 tiers in Check Point architecture: manegement client (Smart Console or automation tools), management server and gateways.
+
+So automation works in parallel to interactive users and is subject to same access rights and change session management.
+
+![alt text](./img/3tier.png)
+
 ## Management API accessibility
 
 Note Management server IP address and review Manage&Settings -> Blades -> Management API settings
