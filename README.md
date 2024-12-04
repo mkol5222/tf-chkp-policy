@@ -122,7 +122,7 @@ Here is our new host object:
 
 Consider right click on session and *Publish & Disconnect* it from GUI. This will apply changes to the database and object becomes visible in Smart Console.
 
-## More conntent
+## More content
 
 * Publish and disconnect session from Terraform
 * Import object from Security Management into Terraform
