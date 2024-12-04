@@ -85,6 +85,8 @@ $params = @{
 $PSVersionTable
 # login
 $response = Invoke-RestMethod @params
+# or in Powershell 7
+$response = Invoke-RestMethod @params -SkipCertificateCheck
 # get session token
 $sid = $response.sid
 Write-Host $sid
@@ -101,6 +103,8 @@ $params = @{
 }
 # fetch hosts
 $response = Invoke-RestMethod @params
+# or in Powershell 7
+$response = Invoke-RestMethod @params -SkipCertificateCheck
 
 # print hosts
 $response.objects | select name, ipv4_address, tags
