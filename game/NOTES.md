@@ -68,3 +68,46 @@ gc main.tf
 # plan again for final apply. approve and check GUI, if available
 .\terraform.exe apply
 ```
+
+Now we can create score board with Management API:
+```powershell
+# login with CHECKPOINT_API_KEY to CHECKPOINT_SERVER
+$url = "https://$env:CHECKPOINT_SERVER/web_api/login"
+$params = @{
+    uri = $url
+    method = "POST"
+    headers = @{"Content-Type"="application/json"}
+    body = ConvertTo-Json @{ "api-key" = $env:CHECKPOINT_API_KEY }
+}
+# powershell 5 certificate valuidation bypass
+[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true} ;
+# powershell version
+$PSVersionTable
+# login
+$response = Invoke-RestMethod @params
+# get session token
+$sid = $response.sid
+Write-Host $sid
+
+# fetch host objects with tag game
+# https://sc1.checkpoint.com/documents/latest/APIs/#web/show-hosts~v2%20
+
+$url = "https://$env:CHECKPOINT_SERVER/web_api/show-hosts"
+$params = @{
+    uri = $url
+    method = "POST"
+    headers = @{"Content-Type"="application/json"; "X-chkp-sid"=$sid}
+    body = ConvertTo-Json @{ "filter" = "game"; "details-level" = "full" ; "limit" = 100 }
+}
+# fetch hosts
+$response = Invoke-RestMethod @params
+
+# print hosts
+$response.objects | select name, ipv4_address, tags
+
+# one host in detail
+$response.objects[0] | ConvertTo-Json -Depth 10
+
+# score board sorted by creation time
+$response.objects | select name, ipv4_address, @{n="tags";e={($_.tags | %{$_.name} )}}, @{n="ts"; e={ $_."meta-info"."creation-time".posix }}, @{n="created"; e={ $_."meta-info"."creation-time"."iso-8601" }}| sort-object ts | ft -AutoSize
+```
