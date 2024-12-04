@@ -39,10 +39,10 @@ terraform {
 }
 
 resource "checkpoint_management_host" "game" {
-  name = "game_by_someuser"
+  name = "game_by_someuser" # CHANGE name to game_by_youruser
   ipv4_address = "127.0.0.127"
   ignore_warnings = true # we ignore warnings like same IP on multiple hosts
-  tags = ["game", "user:someuser"]
+  tags = ["game", "user:someuser"] # CHANGE user:youruser tag
 }
 
 resource "checkpoint_management_publish" "policy" {
