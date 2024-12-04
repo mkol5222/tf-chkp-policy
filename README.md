@@ -81,6 +81,8 @@ terraform {
   }
 }
 EOF
+
+cat main.tf
 ```
 
 This should be enough to start with Terraform provider. We can now initialize Terraform, so it fetches provider plugin for Check Point Management:
@@ -101,6 +103,8 @@ resource "checkpoint_management_host" "example" {
   ipv4_address = "127.0.0.127"
 }
 EOF
+
+cat hosts.tf
 
 # see if credentials are set and what would be created
 terraform plan
