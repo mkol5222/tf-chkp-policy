@@ -59,13 +59,12 @@ resource "checkpoint_management_host" "csv" {
 resource "checkpoint_management_publish" "publish" {
   triggers = [timestamp()]
   depends_on = [checkpoint_management_host.csv]
+  run_publish_on_destroy = true
 }
 EOF
 
 terraform fmt
 cat hosts.tf
-
-
 ```
 
 Time to initialize Terraform and apply the configuration.
@@ -80,4 +79,52 @@ terraform apply
 terraform state list
 # see first host
 terraform state show 'checkpoint_management_host.csv["pankrac"]'
+```
+
+
+
+CSV updates drive Terraform changes. We may do some changes and apply them.
+
+```bash
+# update CSV file - add new host
+cat <<EOF >> objects.csv
+joedoe,172.16.0.9,blue
+EOF
+
+cat objects.csv
+
+# update servac host - change color
+sed -i 's/orange/cyan/' objects.csv
+cat objects.csv
+
+# review and apply changes
+terraform apply
+```
+
+We may also revert changes in CSV file and apply them to Management.
+
+```bash
+cat <<EOF > objects.csv
+name,ipv4_address,color
+pankrac,10.0.0.10,red
+servac,192.168.10.10,orange
+bonifac,172.16.0.1,blue
+EOF
+
+cat objects.csv
+
+# review and apply changes
+terraform apply
+
+# final state
+terraform state list
+```
+
+
+We may do final cleanup, remove all objects managed by Terraform.
+It will also publish changes to Check Point Management.
+
+```bash
+# destroy all objects
+terraform destroy
 ```
