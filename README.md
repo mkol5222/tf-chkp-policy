@@ -129,8 +129,8 @@ Consider right click on session and *Publish & Disconnect* it from GUI. This wil
 ## More content
 
 * Publish and disconnect session from Terraform
-* Import object from Security Management into Terraform
-* Bulk operations on objects from CSV/YAML/JSON with Terraform
+* [Import](./import/NOTES.md) object from Security Management into Terraform
+* [Bulk operations](./bulk/NOTES.md) on objects from CSV/YAML/JSON with Terraform
 * [Game](./game/NOTES.md) - who will be first to create host with TF from his machine?
 * Session name and description
 * Improved publish with easy dependencies (publish made last)
