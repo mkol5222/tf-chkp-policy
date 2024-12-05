@@ -4,7 +4,7 @@ Lets assume we have existing objects in Check Point Management with complex conf
 
 Even simple host object can have complex configuration. If you have just created it in your lab, make sure ti publish, so other users including automation tools can see it.
 
-![alt text](../img/complex_object.png)
+![alt text](./img/complex_host.png)
 
 Focus on type and name of the object. We can import it into Terraform state with `terraform import` command. This will create a new resource in Terraform state and we can adopt the code.
 
